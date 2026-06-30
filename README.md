@@ -7,7 +7,7 @@ Web dashboard to receive and display LinSpec kernel hardening scan reports.
 [![Framework-Flask](https://img.shields.io/badge/Framework-Flask-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![License-MIT](https://img.shields.io/badge/License-MIT-EE0000?style=flat-square&logo=license&logoColor=white)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-00A86B?style=flat-square)](#-roadmap)
-[![CI](https://img.shields.io/github/actions/workflow/status/jeffersoncesarantunes/linspec-dashboard/ci.yml?style=flat-square&logo=github&label=CI)](https://github.com/jeffersoncesarantunes/linspec-dashboard/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/jeffersoncesarantunes/LinDash/ci.yml?style=flat-square&logo=github&label=CI)](https://github.com/jeffersoncesarantunes/LinDash/actions/workflows/ci.yml)
 [![Tested-on](https://img.shields.io/badge/Tested%20on-Arch%20Linux-1793D1?style=flat-square&logo=arch-linux)](https://security.archlinux.org/)
 [![Domain](https://img.shields.io/badge/Domain-Security%20Dashboard-8A2BE2?style=flat-square)](docs/ARCHITECTURE.md)
 

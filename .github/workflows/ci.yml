@@ -1,4 +1,4 @@
-name: LinSpec Dashboard CI
+name: LinDash CI
 
 on:
   push:

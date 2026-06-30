@@ -1,5 +1,5 @@
 [project]
-name = "linspec-dashboard"
+name = "lindash"
 description = "Web dashboard for LinSpec kernel hardening scan reports"
 requires-python = ">=3.10"
 dependencies = [
