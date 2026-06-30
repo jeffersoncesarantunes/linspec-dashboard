@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>LinSpec Dashboard</h1>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="value blue">{{ stats.total_scans or 0 }}</div>
+    <div class="label">Total de Scans</div>
+  </div>
+  <div class="stat-card">
+    <div class="value blue">{{ subscriber_count }}</div>
+    <div class="label">Inscritos (Checklist)</div>
+  </div>
+  <div class="stat-card">
+    <div class="value green">{{ stats.avg_score|round(1) if stats.avg_score else 0 }}%</div>
+    <div class="label">Score Médio</div>
+  </div>
+  <div class="stat-card">
+    <div class="value green">{{ stats.total_passed or 0 }}</div>
+    <div class="label">Checks PASS</div>
+  </div>
+  <div class="stat-card">
+    <div class="value yellow">{{ stats.total_warned or 0 }}</div>
+    <div class="label">Checks WARN</div>
+  </div>
+  <div class="stat-card">
+    <div class="value red">{{ stats.total_failed or 0 }}</div>
+    <div class="label">Checks VULN</div>
+  </div>
+</div>
+
+<h2>Últimos Scans</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Hostname</th>
+      <th>Kernel</th>
+      <th>Checks</th>
+      <th>PASS</th>
+      <th>WARN</th>
+      <th>VULN</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in scans %}
+    <tr>
+      <td style="white-space:nowrap">{{ s.created_at[:19] }}</td>
+      <td><a href="/scan/{{ s.id }}">{{ s.hostname }}</a></td>
+      <td style="font-family:var(--font);font-size:0.78rem">{{ s.kernel[:40] if s.kernel else '-' }}</td>
+      <td>{{ s.total_checks }}</td>
+      <td><span class="badge pass">{{ s.passed }}</span></td>
+      <td><span class="badge warn">{{ s.warned }}</span></td>
+      <td><span class="badge fail">{{ s.failed }}</span></td>
+      <td>
+        <span style="font-family:var(--font);font-weight:700">{{ s.score }}%</span>
+        <div class="score-bar">
+          <div class="fill {% if s.score >= 80 %}green{% elif s.score >= 50 %}yellow{% else %}red{% endif %}" style="width:{{ s.score }}%"></div>
+        </div>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8" style="text-align:center;color:var(--fg3);padding:32px">
+      Nenhum scan recebido ainda.<br>
+      Configure o LinSpec para enviar relatórios para <code>/api/scan</code>.
+    </td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
